@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/frameworkStyles.css";
 
 import runningData from "../data/testRun.gpx";
+import { TrackPoint } from "./js/trackPoint";
 
 class RunViz extends BaseApp {
     constructor() {
@@ -66,6 +67,21 @@ class RunViz extends BaseApp {
         const cube = new THREE.Mesh(cubeGeom, cubeMat);
         this.root.add(cube);
         cube.position.y = APPCONFIG.CUBE_HEIGHT/2;
+
+        // Get all tracking points
+        let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
+        let currentPoint;
+        let offset = new THREE.Vector3(trackPoints[0].$.lat, trackPoints[0].$.lon, 0.0);
+        let currentPosition = new THREE.Vector3();
+
+        let points = [];
+
+        for (let i=0, numPoints=trackPoints.length; i<numPoints; ++i) {
+            currentPoint = trackPoints[i];
+            points.push(new TrackPoint(currentPoint.$.lat, currentPoint.$.lon, 0.0, currentPoint.time));
+        }
+
+        cube.position.copy(points[100].position);
     }
 
     update() {
@@ -257,8 +273,4 @@ $( () => {
     $("#info").on("click", () => {
         $("#infoModal").modal();
     });
-
-    // Get track points
-    let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
-    console.log(trackPoints[0].$.lat);
 });
