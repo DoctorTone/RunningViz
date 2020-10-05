@@ -33,6 +33,12 @@ module.exports = {
                 use: [
                     "file-loader"
                 ]
+            },
+            {
+                test: /\.(xml|gpx)$/,
+                use: [
+                    "xml-loader"
+                ]
             }
         ]
     },

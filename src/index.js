@@ -8,6 +8,8 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/frameworkStyles.css";
 
+import runningData from "../data/testRun.gpx";
+
 class RunViz extends BaseApp {
     constructor() {
         super();
@@ -255,4 +257,6 @@ $( () => {
     $("#info").on("click", () => {
         $("#infoModal").modal();
     });
+
+    console.log(runningData);
 });
