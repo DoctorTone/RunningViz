@@ -8,7 +8,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/frameworkStyles.css";
 
-class Framework extends BaseApp {
+class RunViz extends BaseApp {
     constructor() {
         super();
         this.cameraRotate = false;
@@ -131,7 +131,7 @@ class Framework extends BaseApp {
 }
 
 $( () => {
-    const app = new Framework();
+    const app = new RunViz();
 
     app.init();
     app.createScene();
