@@ -258,5 +258,7 @@ $( () => {
         $("#infoModal").modal();
     });
 
-    console.log(runningData);
+    // Get track points
+    let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
+    console.log(trackPoints[0].$.lat);
 });
