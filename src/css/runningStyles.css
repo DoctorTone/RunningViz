@@ -17,9 +17,6 @@ body {
 .modal {
     color: black;
 }
-#guiWidth {
-    width: 175px;
-}
 .panel {
     position: absolute;
     text-align: center;
@@ -39,6 +36,14 @@ body {
 }
 #rotate img {
     width: 100%;
+}
+#controls {
+    top: 1%;
+    right: 1%;
+    width: 25%;
+}
+#controls img {
+    width: 25%;
 }
 .copyright {
     position: absolute;
