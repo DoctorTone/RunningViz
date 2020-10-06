@@ -64,7 +64,7 @@ class RunViz extends BaseApp {
 
         // Add avatar to scene - cube for now
         const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
-        const runnerMat = new THREE.MeshLambertMaterial( {color: 0xcdcdcd});
+        const runnerMat = new THREE.MeshLambertMaterial( {color: 0xa0a0a0});
         const runner = new THREE.Mesh(runnerGeom, runnerMat);
         this.root.add(runner);
         runner.position.y = APPCONFIG.CUBE_HEIGHT/2;
