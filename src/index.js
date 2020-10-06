@@ -20,6 +20,7 @@ class RunViz extends BaseApp {
         this.zoomingIn = false;
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
+        this.animating = false;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
@@ -61,12 +62,12 @@ class RunViz extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
-        // Add cube to scene
-        const cubeGeom = new THREE.BoxBufferGeometry(APPCONFIG.CUBE_HEIGHT, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_DEPTH);
-        const cubeMat = new THREE.MeshLambertMaterial( {color: 0xff0000});
-        const cube = new THREE.Mesh(cubeGeom, cubeMat);
-        this.root.add(cube);
-        cube.position.y = APPCONFIG.CUBE_HEIGHT/2;
+        // Add avatar to scene - cube for now
+        const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
+        const runnerMat = new THREE.MeshLambertMaterial( {color: 0xcdcdcd});
+        const runner = new THREE.Mesh(runnerGeom, runnerMat);
+        this.root.add(runner);
+        runner.position.y = APPCONFIG.CUBE_HEIGHT/2;
 
         // Get all tracking points
         let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
@@ -90,17 +91,27 @@ class RunViz extends BaseApp {
             current_ms = current_ms - timeOffset;
 
             // Swap y/z over as long/lat
-            points.push(new TrackPoint(currentPosition.x, currentPosition.z, currentPosition.y, current_ms));
+            points.push(new TrackPoint(currentPosition.x, runner.position.y, currentPosition.y, current_ms));
         }
 
-        cube.position.copy(points[0].position);
+        runner.position.copy(points[0].position);
+
+        // Trails
+        let sphereGeom = new THREE.SphereBufferGeometry(5);
+        let sphereMat = new THREE.MeshLambertMaterial( { color: 0xff0000});
+        let sphereTrail = new THREE.Mesh(sphereGeom, sphereMat);
+        this.trailObject = sphereTrail;
 
         this.numPoints = numPoints;
+        this.trackPoints = points;
         this.currentPoint = 0;
+        this.runnerBody = runner;
+
+        this.animating = true;
     }
 
     update() {
-        let delta = this.clock.getDelta();
+        let elapsed = this.clock.getElapsedTime() * 1000 * 8;
 
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
@@ -120,6 +131,18 @@ class RunViz extends BaseApp {
             this.root.position.sub(this.tempVec);
             //DEBUG
             //console.log("Root = ", this.root.position);
+        }
+
+        if (this.animating) {
+            if (elapsed >= this.trackPoints[this.currentPoint + 1].elapsed) {
+                let trail = this.trailObject.clone();
+                this.root.add(trail);
+                trail.position.copy(this.trackPoints[this.currentPoint].position);
+                if (++this.currentPoint === (this.numPoints - 1)) {
+                    this.animating = false;
+                }
+                this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
+            }
         }
 
         super.update();

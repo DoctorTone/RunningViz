@@ -15,7 +15,7 @@ const APPCONFIG = {
     UP: 2,
     DOWN: 3,
     ZOOM_SPEED: 0.1,
-    MAP_SCALE: 10000
+    MAP_SCALE: 10000 * 4
 }
 
 export { APPCONFIG };
