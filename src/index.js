@@ -173,8 +173,9 @@ class RunViz extends BaseApp {
         this.zoomingOut = status;
     }
 
-    toggleAnimation() {
+    toggleAnimation(elem) {
         this.animating = !this.animating;
+        elem.attr("src", this.animating ? "/src/images/pause-button.png" : "/src/images/play-button.png");
     }
 }
 
@@ -307,6 +308,6 @@ $( () => {
 
     // Playback controls
     play.on("click", () => {
-        app.toggleAnimation();
+        app.toggleAnimation(play);
     });
 });
