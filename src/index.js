@@ -78,7 +78,10 @@ class RunViz extends BaseApp {
 
         for (let i=0, numPoints=trackPoints.length; i<numPoints; ++i) {
             currentPoint = trackPoints[i];
-            points.push(new TrackPoint(currentPoint.$.lat, currentPoint.$.lon, 0.0, currentPoint.time));
+            currentPosition.set(currentPoint.$.lat, currentPoint.$.lon, 0.0);
+            currentPosition.sub(offset);
+            currentPosition.multiplyScalar(APPCONFIG.MAP_SCALE);
+            points.push(new TrackPoint(currentPosition.x, currentPosition.y, currentPosition.z, currentPoint.time));
         }
 
         cube.position.copy(points[100].position);
