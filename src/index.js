@@ -99,6 +99,7 @@ class RunViz extends BaseApp {
         this.trackPoints = points;
         this.currentPoint = 0;
         this.runnerBody = runner;
+        this.elapsedElem = $("#elapsed");
     }
 
     update() {
@@ -126,6 +127,7 @@ class RunViz extends BaseApp {
 
         if (this.animating) {
             this.elapsedTime += (delta * this.playbackSpeed);
+            this.elapsedElem.html(this.elapsedTime);
             if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
                 let trail = this.trailObject.clone();
                 this.root.add(trail);
