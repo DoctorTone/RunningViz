@@ -72,7 +72,10 @@ class RunViz extends BaseApp {
         let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
         let currentPoint;
         let offset = new THREE.Vector3(trackPoints[0].$.lat, trackPoints[0].$.lon, 0.0);
+        let timeOffset = new Date(trackPoints[0].time).getTime();
         let currentPosition = new THREE.Vector3();
+        let UTCTime;
+        let current_ms;
 
         let points = [];
 
@@ -81,11 +84,15 @@ class RunViz extends BaseApp {
             currentPosition.set(currentPoint.$.lat, currentPoint.$.lon, 0.0);
             currentPosition.sub(offset);
             currentPosition.multiplyScalar(APPCONFIG.MAP_SCALE);
+            UTCTime = new Date(currentPoint.time);
+            current_ms = UTCTime.getTime();
+            current_ms = current_ms - timeOffset;
+
             // Swap y/z over as long/lat
-            points.push(new TrackPoint(currentPosition.x, currentPosition.z, currentPosition.y, currentPoint.time));
+            points.push(new TrackPoint(currentPosition.x, currentPosition.z, currentPosition.y, current_ms));
         }
 
-        cube.position.copy(points[100].position);
+        cube.position.copy(points[0].position);
     }
 
     update() {
