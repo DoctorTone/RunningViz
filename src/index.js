@@ -81,7 +81,8 @@ class RunViz extends BaseApp {
             currentPosition.set(currentPoint.$.lat, currentPoint.$.lon, 0.0);
             currentPosition.sub(offset);
             currentPosition.multiplyScalar(APPCONFIG.MAP_SCALE);
-            points.push(new TrackPoint(currentPosition.x, currentPosition.y, currentPosition.z, currentPoint.time));
+            // Swap y/z over as long/lat
+            points.push(new TrackPoint(currentPosition.x, currentPosition.z, currentPosition.y, currentPoint.time));
         }
 
         cube.position.copy(points[100].position);
