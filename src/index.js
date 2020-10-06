@@ -78,8 +78,9 @@ class RunViz extends BaseApp {
         let current_ms;
 
         let points = [];
+        let numPoints = trackPoints.length;
 
-        for (let i=0, numPoints=trackPoints.length; i<numPoints; ++i) {
+        for (let i=0; i<numPoints; ++i) {
             currentPoint = trackPoints[i];
             currentPosition.set(currentPoint.$.lat, currentPoint.$.lon, 0.0);
             currentPosition.sub(offset);
@@ -93,6 +94,9 @@ class RunViz extends BaseApp {
         }
 
         cube.position.copy(points[0].position);
+
+        this.numPoints = numPoints;
+        this.currentPoint = 0;
     }
 
     update() {
