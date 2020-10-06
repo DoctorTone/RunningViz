@@ -21,6 +21,7 @@ class RunViz extends BaseApp {
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
         this.animating = false;
+        this.playbackSpeed = 8;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
@@ -94,12 +95,10 @@ class RunViz extends BaseApp {
         this.trackPoints = points;
         this.currentPoint = 0;
         this.runnerBody = runner;
-
-        this.animating = true;
     }
 
     update() {
-        let elapsed = this.clock.getElapsedTime() * 1000 * 8;
+        let delta = this.clock.getDelta() * 1000;
 
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
@@ -122,7 +121,8 @@ class RunViz extends BaseApp {
         }
 
         if (this.animating) {
-            if (elapsed >= this.trackPoints[this.currentPoint + 1].elapsed) {
+            this.elapsedTime += (delta * this.playbackSpeed);
+            if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
                 let trail = this.trailObject.clone();
                 this.root.add(trail);
                 trail.position.copy(this.trackPoints[this.currentPoint].position);
@@ -172,6 +172,10 @@ class RunViz extends BaseApp {
     zoomOut(status) {
         this.zoomingOut = status;
     }
+
+    toggleAnimation() {
+        this.animating = !this.animating;
+    }
 }
 
 $( () => {
@@ -189,6 +193,7 @@ $( () => {
     let rotateDown = $("#rotateDown");
     let zoomIn = $("#zoomIn");
     let zoomOut = $("#zoomOut");
+    let play = $("#play");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -298,5 +303,10 @@ $( () => {
 
     $("#info").on("click", () => {
         $("#infoModal").modal();
+    });
+
+    // Playback controls
+    play.on("click", () => {
+        app.toggleAnimation();
     });
 });
