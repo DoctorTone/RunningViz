@@ -132,6 +132,7 @@ class RunViz extends BaseApp {
                 trail.position.copy(this.trackPoints[this.currentPoint].position);
                 if (++this.currentPoint === (this.numPoints - 1)) {
                     this.animating = false;
+                    $("#play").attr("src", "/src/images/play-button.png");
                 }
                 this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
             }
