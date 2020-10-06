@@ -6,7 +6,7 @@ import { APPCONFIG } from "./js/appConfig";
 import "bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/frameworkStyles.css";
+import "./css/runningStyles.css";
 
 import runningData from "../data/testRun.gpx";
 import { TrackPoint } from "./js/trackPoint";
@@ -26,20 +26,8 @@ class RunViz extends BaseApp {
         this.tempVec = new THREE.Vector3();
     }
 
-    setContainer(container) {
-        this.container = container;
-    }
-
-    init(container) {
-        if (!container) {
-            container = document.getElementById("WebGL-Output");
-            if (!container) {
-                alert("No container specified!");
-                return;
-            }
-        }
-        this.container = container;
-        super.init(container);
+    init() {
+        super.init();
     }
 
     addGroundPlane() {

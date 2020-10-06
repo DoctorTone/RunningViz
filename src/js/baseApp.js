@@ -12,7 +12,6 @@ export class BaseApp {
         this.camera = null;
         this.controls = null;
         this.stats = null;
-        this.container = null;
         this.mouse = new THREE.Vector2();
         this.pickingEnabled = false;
         this.pickedObjects = [];
@@ -163,7 +162,7 @@ export class BaseApp {
 
     createCamera() {
         let camNear = new THREE.Vector3(SceneConfig.CameraPos.x, SceneConfig.CameraPos.y, SceneConfig.CameraPos.z);
-        this.camera = new THREE.PerspectiveCamera(SceneConfig.FOV, this.container.clientWidth / window.innerHeight, SceneConfig.NEAR_PLANE, SceneConfig.FAR_PLANE );
+        this.camera = new THREE.PerspectiveCamera(SceneConfig.FOV, window.innerWidth / window.innerHeight, SceneConfig.NEAR_PLANE, SceneConfig.FAR_PLANE );
         this.camera.position.copy(camNear);
         this.camPosNear = camNear;
     }
