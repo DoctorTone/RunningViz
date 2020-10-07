@@ -23,7 +23,7 @@ class RunViz extends BaseApp {
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
         this.animating = false;
-        this.playbackSpeed = 16;
+        this.playbackSpeed = 1;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
