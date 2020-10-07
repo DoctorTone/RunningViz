@@ -99,7 +99,6 @@ class RunViz extends BaseApp {
         this.trackPoints = points;
         this.currentPoint = 0;
         this.runnerBody = runner;
-        this.elapsedElem = $("#elapsed");
     }
 
     update() {
@@ -127,7 +126,7 @@ class RunViz extends BaseApp {
 
         if (this.animating) {
             this.elapsedTime += (delta * this.playbackSpeed);
-            this.elapsedElem.html(this.elapsedTime);
+            this.updateDisplay(this.elapsedTime);
             if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
                 let trail = this.trailObject.clone();
                 this.root.add(trail);
@@ -141,6 +140,17 @@ class RunViz extends BaseApp {
         }
 
         super.update();
+    }
+
+    updateDisplay(time_ms) {
+        let seconds = Math.round(time_ms/1000);
+        let minutes = Math.floor(seconds/60);
+        let hours = Math.floor(minutes/60);
+        //dd = String(currentDate.getDate()).padStart(2, '0');
+        
+        $("#elapsedHours").html(String(hours).padStart(2, "0"));
+        $("#elapsedMinutes").html(String(minutes).padStart(2, "0"));
+        $("#elapsedSeconds").html(String(seconds % 60).padStart(2, "0"));
     }
 
     rotateCamera(status, direction) {
