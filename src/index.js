@@ -194,6 +194,13 @@ class RunViz extends BaseApp {
         this.animating = !this.animating;
         elem.attr("src", this.animating ? "/src/images/pause-button.png" : "/src/images/play-button.png");
     }
+
+    advancePlayback() {
+        this.playbackSpeed *= 2;
+        if (this.playbackSpeed > APPCONFIG.MAX_PLAYBACK) {
+            this.playbackSpeed = 1;
+        }
+    }
 }
 
 $( () => {
@@ -212,6 +219,7 @@ $( () => {
     let zoomIn = $("#zoomIn");
     let zoomOut = $("#zoomOut");
     let play = $("#play");
+    let fastForward = $("#fastForward");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -326,5 +334,9 @@ $( () => {
     // Playback controls
     play.on("click", () => {
         app.toggleAnimation(play);
+    });
+
+    fastForward.on("click", () => {
+        app.advancePlayback();
     });
 });
