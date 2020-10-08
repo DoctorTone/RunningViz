@@ -84,7 +84,7 @@ class RunViz extends BaseApp {
             current_ms = current_ms - timeOffset;
 
             // Swap y/z over as long/lat
-            points.push(new TrackPoint(currentPosition.x, currentPosition.y + 30, currentPosition.z, current_ms));
+            points.push(new TrackPoint(currentPosition.x, currentPosition.y + 30, currentPosition.z, elevationData[i].distance, current_ms));
         }
 
         runner.position.copy(points[0].position);
