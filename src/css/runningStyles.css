@@ -40,10 +40,10 @@ body {
 #controls {
     top: 1%;
     right: 1%;
-    width: 25%;
+    width: 33%;
 }
 #controls img {
-    width: 25%;
+    width: 15%;
 }
 .copyright {
     position: absolute;
@@ -81,15 +81,6 @@ body {
     }
     #info {
         width: 7.5%;
-    }
-    #guiWidth {
-        width: 200px;
-    }
-}
-
-@media (min-width: 768px) {
-    #guiWidth {
-        width: 300px;
     }
 }
 
