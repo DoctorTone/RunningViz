@@ -24,6 +24,7 @@ class RunViz extends BaseApp {
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
         this.animating = false;
         this.playbackSpeed = 1;
+        this.playbackDirection = APPCONFIG.FORWARD;
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
@@ -125,19 +126,26 @@ class RunViz extends BaseApp {
         }
 
         if (this.animating) {
+            delta = this.playbackDirection === APPCONFIG.FORWARD ? delta : -delta;
             this.elapsedTime += (delta * this.playbackSpeed);
             this.updateDisplayTime(this.elapsedTime);
-            if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
-                this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
-                let trail = this.trailObject.clone();
-                this.root.add(trail);
-                trail.position.copy(this.trackPoints[this.currentPoint].position);
-                if (++this.currentPoint === (this.numPoints - 1)) {
-                    this.animating = false;
-                    $("#play").attr("src", "/src/images/play-button.png");
+
+            if (this.playbackDirection === APPCONFIG.FORWARD) {
+                if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
+                    this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
+                    let trail = this.trailObject.clone();
+                    this.root.add(trail);
+                    trail.position.copy(this.trackPoints[this.currentPoint].position);
+                    if (++this.currentPoint === (this.numPoints - 1)) {
+                        this.animating = false;
+                        $("#play").attr("src", "/src/images/play-button.png");
+                    }
+                    this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
                 }
-                this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
+            } else {
+                
             }
+            
         }
 
         super.update();
