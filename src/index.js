@@ -35,7 +35,7 @@ class RunViz extends BaseApp {
     }
 
     addGroundPlane() {
-        const groundGeom = new THREE.PlaneBufferGeometry(APPCONFIG.GROUND_WIDTH, APPCONFIG.GROUND_HEIGHT, APPCONFIG.GROUND_SEGMENTS);
+        const groundGeom = new THREE.CircleBufferGeometry(APPCONFIG.GROUND_RADIUS, APPCONFIG.GROUND_SEGMENTS);
         const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL} );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
