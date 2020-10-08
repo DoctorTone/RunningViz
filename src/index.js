@@ -229,6 +229,10 @@ class RunViz extends BaseApp {
 
         this.playbackDirection = direction;
     }
+
+    setPlaybackSpeed() {
+        this.playbackSpeed = document.querySelector('input[name="playbackSpeed"]:checked').value;
+    }
 }
 
 $( () => {
@@ -249,6 +253,7 @@ $( () => {
     let play = $("#play");
     let fastForward = $("#fastForward");
     let rewind = $("#rewind");
+    let playbackSpeed = $('[id^="playx"');
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -371,5 +376,9 @@ $( () => {
 
     rewind.on("click", () => {
         app.playAnimation(APPCONFIG.BACKWARD);
+    });
+
+    playbackSpeed.on("click", () => {
+        app.setPlaybackSpeed();
     });
 });
