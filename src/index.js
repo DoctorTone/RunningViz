@@ -155,7 +155,7 @@ class RunViz extends BaseApp {
     }
 
     updateDisplayDistance(distance) {
-        let miles = distance * APPCONFIG.METRES_TO_MILES;
+        let miles = (distance * APPCONFIG.METRES_TO_MILES).toFixed(2);
         $("#distance").html(miles);
     }
 
