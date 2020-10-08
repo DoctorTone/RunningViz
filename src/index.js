@@ -54,6 +54,21 @@ class RunViz extends BaseApp {
         // Add ground
         this.addGroundPlane();
 
+        // Skybox
+        let path = "./src//textures/skybox/";
+        let format = '.jpg';
+        let urls = [
+            path + 'px' + format, path + 'nx' + format,
+            path + 'py' + format, path + 'ny' + format,
+            path + 'pz' + format, path + 'nz' + format
+        ];
+
+        var reflectionCube = new THREE.CubeTextureLoader().load( urls, null, null, error => {
+            console.log("Error = ", error);
+        } );
+        reflectionCube.format = THREE.RGBFormat;
+        this.scene.background = reflectionCube;
+
         // Add avatar to scene - cube for now
         const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
         const runnerMat = new THREE.MeshLambertMaterial( {color: 0xa0a0a0});
