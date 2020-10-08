@@ -200,6 +200,7 @@ class RunViz extends BaseApp {
         if (this.playbackSpeed > APPCONFIG.MAX_PLAYBACK) {
             this.playbackSpeed = 1;
         }
+        $("#playbackSpeed").html(this.playbackSpeed);
     }
 }
 
