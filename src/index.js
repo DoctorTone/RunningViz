@@ -61,6 +61,12 @@ class RunViz extends BaseApp {
         this.root.add(runner);
         runner.position.y = APPCONFIG.CUBE_HEIGHT/2;
 
+        // Trails
+        let sphereGeom = new THREE.SphereBufferGeometry(5);
+        let sphereMat = new THREE.MeshLambertMaterial( { color: 0xff0000});
+        let sphereTrail = new THREE.Mesh(sphereGeom, sphereMat);
+        this.trailObject = sphereTrail;
+
         // Get all tracking points
         let trackPoints = runningData.gpx.trk[0].trkseg[0].trkpt;
         let currentPoint;
@@ -71,6 +77,8 @@ class RunViz extends BaseApp {
         let current_ms;
 
         let points = [];
+        let trails = [];
+        let currentTrail;
         let numPoints = trackPoints.length - 1;
 
         for (let i=0; i<numPoints; ++i) {
@@ -86,20 +94,22 @@ class RunViz extends BaseApp {
 
             // Swap y/z over as long/lat
             points.push(new TrackPoint(currentPosition.x, currentPosition.y + 30, currentPosition.z, elevationData[i].distance, current_ms));
+
+            // Trails
+            currentTrail = sphereTrail.clone();
+            trails.push(currentTrail);
+            currentTrail.visible = false;
+            currentTrail.position.copy(points[i].position);
+            this.root.add(currentTrail);
         }
 
         runner.position.copy(points[0].position);
-
-        // Trails
-        let sphereGeom = new THREE.SphereBufferGeometry(5);
-        let sphereMat = new THREE.MeshLambertMaterial( { color: 0xff0000});
-        let sphereTrail = new THREE.Mesh(sphereGeom, sphereMat);
-        this.trailObject = sphereTrail;
 
         this.numPoints = numPoints;
         this.trackPoints = points;
         this.currentPoint = 0;
         this.runnerBody = runner;
+        this.trails = trails;
     }
 
     update() {
@@ -133,9 +143,7 @@ class RunViz extends BaseApp {
             if (this.playbackDirection === APPCONFIG.FORWARD) {
                 if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
                     this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
-                    let trail = this.trailObject.clone();
-                    this.root.add(trail);
-                    trail.position.copy(this.trackPoints[this.currentPoint].position);
+                    this.trails[this.currentPoint].visible = true;
                     if (++this.currentPoint === (this.numPoints - 1)) {
                         this.animating = false;
                         $("#play").attr("src", "/src/images/play-button.png");
