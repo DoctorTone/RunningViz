@@ -40,12 +40,22 @@
     <p>
       Distance:<span id="distance">0.00</span>
     </p>
-    <p>
-      Playback speed:&nbsp<span id="playbackSpeed">1</span>x
-    </p>
-    <img id="rewind" src="./images/rewind-button.png" alt="rewind">
-    <img id="play" src="./images/play-button.png">
-    <img id="fastForward" src="./images/forward-button.png" alt="fast forward">
+    <span>Playback speed:&nbsp</span>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="playbackSpeed" id="playx1" value="x1" checked>
+      <label class="form-check-label" for="playx1">x1</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="playbackSpeed" id="playx2" value="x2">
+      <label class="form-check-label" for="playx2">x2</label>
+    </div>
+    
+    <div id="controlImages">
+      <img id="rewind" src="./images/rewind-button.png" alt="rewind">
+      <img id="play" src="./images/play-button.png">
+      <img id="fastForward" src="./images/forward-button.png" alt="fast forward">
+    </div>
+    
   </div>
   <div id="rotate" class="panel d-none">
     <p>Zoom</p>
