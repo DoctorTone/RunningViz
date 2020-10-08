@@ -149,7 +149,7 @@ export class BaseApp {
 
 
         let pointLight = new THREE.PointLight(SceneConfig.pointLightColour);
-        pointLight.position.set(0,1000,1500);
+        pointLight.position.set(0,1000,-1500);
         pointLight.name = 'PointLight';
         scene.add(pointLight);
 

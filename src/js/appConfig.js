@@ -1,14 +1,14 @@
 // General parameters for this app
 
 const APPCONFIG = {
-    ROOT_ROTATE: 0,
+    ROOT_ROTATE: Math.PI,
     CUBE_COLOUR : 0xfff000,
     CUBE_HEIGHT: 10,
     CUBE_WIDTH: 10,
     CUBE_DEPTH: 10,
     GROUND_WIDTH: 1800,
     GROUND_HEIGHT: 1000,
-    GROUND_RADIUS: 750,
+    GROUND_RADIUS: 1000,
     GROUND_SEGMENTS: 16,
     GROUND_MATERIAL: 0xcbcbcb,
     GROUND_LEVEL: -30,
@@ -22,7 +22,8 @@ const APPCONFIG = {
     MAX_PLAYBACK: 32,
     METRES_TO_MILES: 0.000621371,
     FORWARD: true,
-    BACKWARD: false
+    BACKWARD: false,
+    SKYBOX_ENABLED: false
 }
 
 export { APPCONFIG };
