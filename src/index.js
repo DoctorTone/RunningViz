@@ -225,11 +225,7 @@ class RunViz extends BaseApp {
     }
 
     playAnimation(direction) {
-        this.playbackSpeed *= 2;
-        if (this.playbackSpeed > APPCONFIG.MAX_PLAYBACK) {
-            this.playbackSpeed = 1;
-        }
-        $("#playbackSpeed").html(this.playbackSpeed);
+        this.playbackSpeed = document.querySelector('input[name="playbackSpeed"]:checked').value;
 
         this.playbackDirection = direction;
     }
