@@ -39,7 +39,7 @@ class RunViz extends BaseApp {
         const groundMat = new THREE.MeshLambertMaterial( {color: APPCONFIG.GROUND_MATERIAL} );
         const ground = new THREE.Mesh(groundGeom, groundMat);
         ground.rotation.x = -Math.PI/2;
-        ground.position.y = 0;
+        ground.position.y = APPCONFIG.GROUND_LEVEL;
         this.root.add(ground);
     }
 
