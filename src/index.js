@@ -228,6 +228,14 @@ class RunViz extends BaseApp {
         this.playbackSpeed = document.querySelector('input[name="playbackSpeed"]:checked').value;
 
         this.playbackDirection = direction;
+        let fastForward = $("#fastForward");
+        let rewind = $("#rewind");
+
+        fastForward.attr("src", this.playbackDirection === APPCONFIG.FORWARD ? "/src/images/forward-button-green.png" :
+            "/src/images/forward-button.png");
+
+        rewind.attr("src", this.playbackDirection === APPCONFIG.BACKWARD ? "/src/images/rewind-button-green.png" :
+            "/src/images/rewind-button.png");
     }
 
     setPlaybackSpeed() {
