@@ -151,9 +151,16 @@ class RunViz extends BaseApp {
                     this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
                 }
             } else {
-                
+                if (this.elapsedTime <= this.trackPoints[this.currentPoint - 1].elapsed) {
+                    this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
+                    this.trails[this.currentPoint].visible = false;
+                    if (--this.currentPoint <= 0) {
+                        this.animating = false;
+                        $("#play").attr("src", "/src/images/play-button.png");
+                    }
+                    this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
+                }
             }
-            
         }
 
         super.update();
@@ -217,12 +224,14 @@ class RunViz extends BaseApp {
         elem.attr("src", this.animating ? "/src/images/pause-button.png" : "/src/images/play-button.png");
     }
 
-    advancePlayback() {
+    playAnimation(direction) {
         this.playbackSpeed *= 2;
         if (this.playbackSpeed > APPCONFIG.MAX_PLAYBACK) {
             this.playbackSpeed = 1;
         }
         $("#playbackSpeed").html(this.playbackSpeed);
+
+        this.playbackDirection = direction;
     }
 }
 
@@ -243,6 +252,7 @@ $( () => {
     let zoomOut = $("#zoomOut");
     let play = $("#play");
     let fastForward = $("#fastForward");
+    let rewind = $("#rewind");
 
     // Mouse interaction
     rotateLeft.on("mousedown", () => {
@@ -360,6 +370,10 @@ $( () => {
     });
 
     fastForward.on("click", () => {
-        app.advancePlayback();
+        app.playAnimation(APPCONFIG.FORWARD);
+    });
+
+    rewind.on("click", () => {
+        app.playAnimation(APPCONFIG.BACKWARD);
     });
 });

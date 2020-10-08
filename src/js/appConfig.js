@@ -19,7 +19,8 @@ const APPCONFIG = {
     HEIGHT_SCALE: 4,
     MAX_PLAYBACK: 32,
     METRES_TO_MILES: 0.000621371,
-    FORWARD: true
+    FORWARD: true,
+    BACKWARD: false
 }
 
 export { APPCONFIG };
