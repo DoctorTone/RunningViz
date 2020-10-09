@@ -28,7 +28,7 @@ body {
     bottom: 15%;
     right: 1%;
     width: 22.5%;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 #rotate button {
     width: 45%;

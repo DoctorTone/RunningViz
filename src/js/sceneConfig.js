@@ -1,7 +1,7 @@
 // General parameters to help with setting up scene
 
 const SceneConfig = {
-    clearColour: 0x5c5f64,
+    clearColour: 0x91b4eb,
     ambientLightColour: 0x383838,
     pointLightColour: 0xffffff,
     LightPos: {
@@ -22,7 +22,7 @@ const SceneConfig = {
     NEAR_PLANE: 0.1,
     FAR_PLANE: 10000,
     FOV: 45,
-    BACKGROUND: 0xa0a0a0
+    BACKGROUND: 0x3f4245
 };
 
 export { SceneConfig };

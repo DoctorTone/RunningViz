@@ -155,7 +155,7 @@ export class BaseApp {
         */
 
         scene.background = new THREE.Color(SceneConfig.BACKGROUND);
-        scene.fog = new THREE.Fog( 0xa0a0a0, 1500, 3000 );
+        scene.fog = new THREE.Fog( SceneConfig.BACKGROUND, 1500, 3000 );
 
         let light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
         light.position.set( 0, 200, 0 );
