@@ -135,23 +135,32 @@ export class BaseApp {
         scene.add(ambientLight);
 
         /*
-         var spotLight = new THREE.SpotLight(0xffffff);
-         spotLight.position.set(100, 100, 200);
-         spotLight.intensity = 1;
-         this.scene.add(spotLight);
-         */
+        var spotLight = new THREE.SpotLight(0xffffff);
+        spotLight.position.set(100, 100, 200);
+        spotLight.intensity = 1;
+        this.scene.add(spotLight);
+        */
 
         /*
-         var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
-         directionalLight.position.set( 1, 1, 1 );
-         this.scene.add( directionalLight );
-         */
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
+        directionalLight.position.set( 1, 1, 1 );
+        this.scene.add( directionalLight );
+        */
 
-
+        /*
         let pointLight = new THREE.PointLight(SceneConfig.pointLightColour);
         pointLight.position.set(0,1000,-1500);
         pointLight.name = 'PointLight';
         scene.add(pointLight);
+        */
+
+        scene.background = new THREE.Color(SceneConfig.BACKGROUND);
+        scene.fog = new THREE.Fog( 0xa0a0a0, 1500, 3000 );
+
+        let light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+        light.position.set( 0, 200, 0 );
+        scene.add( light );
+        this.hemisphereLight = light;
 
         this.scene = scene;
     }

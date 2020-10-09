@@ -1,16 +1,16 @@
 // General parameters for this app
 
 const APPCONFIG = {
-    ROOT_ROTATE: Math.PI,
+    ROOT_ROTATE: 0,
     CUBE_COLOUR : 0xfff000,
     CUBE_HEIGHT: 10,
     CUBE_WIDTH: 10,
     CUBE_DEPTH: 10,
-    GROUND_WIDTH: 1800,
+    GROUND_WIDTH: 18000,
     GROUND_HEIGHT: 1000,
     GROUND_RADIUS: 1000,
     GROUND_SEGMENTS: 16,
-    GROUND_MATERIAL: 0xcbcbcb,
+    GROUND_MATERIAL: 0x999999,
     GROUND_LEVEL: -30,
     RIGHT: 1,
     LEFT: 0,

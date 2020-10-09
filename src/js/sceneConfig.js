@@ -12,7 +12,7 @@ const SceneConfig = {
     CameraPos: {
         x: 0,
         y: 480,
-        z: -1350
+        z: 1350
     },
     LookAtPos: {
         x: 0,
@@ -21,7 +21,8 @@ const SceneConfig = {
     },
     NEAR_PLANE: 0.1,
     FAR_PLANE: 10000,
-    FOV: 45
+    FOV: 45,
+    BACKGROUND: 0xa0a0a0
 };
 
 export { SceneConfig };
