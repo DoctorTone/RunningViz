@@ -22,7 +22,7 @@ const SceneConfig = {
     NEAR_PLANE: 0.1,
     FAR_PLANE: 10000,
     FOV: 45,
-    BACKGROUND: 0x3f4245
+    BACKGROUND: 0x515457
 };
 
 export { SceneConfig };
