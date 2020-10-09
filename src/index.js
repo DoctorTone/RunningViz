@@ -71,6 +71,13 @@ class RunViz extends BaseApp {
             this.scene.background = reflectionCube;
         }
         
+        // Grid
+        let grid = new THREE.GridHelper( 10000, 100, 0x000000, 0x000000 );
+        grid.material.opacity = 0.2;
+        grid.material.transparent = true;
+        grid.position.y = -28;
+        this.scene.add( grid );
+                
         // Add avatar to scene - cube for now
         const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
         const runnerMat = new THREE.MeshLambertMaterial( {color: 0xa0a0a0});
