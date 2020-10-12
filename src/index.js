@@ -185,6 +185,7 @@ class RunViz extends BaseApp {
                     this.tempVec.copy(this.trackPoints[this.currentPoint + 1].position);
                     this.tempVec.sub(this.trackPoints[this.currentPoint].position);
                     this.currentDirection.copy(this.tempVec);
+                    this.currentDirection.y = 0;
                     this.tempVec.multiplyScalar((delta_ms * this.playbackSpeed) / delta_elapsed);
                     this.runnerBody.position.add(this.tempVec);
                     this.runnerBody.quaternion.setFromUnitVectors(this.headVector, this.currentDirection);
