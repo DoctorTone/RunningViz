@@ -83,7 +83,7 @@ class RunViz extends BaseApp {
 
         // Trails
         let sphereGeom = new THREE.SphereBufferGeometry(5);
-        let sphereMat = new THREE.MeshLambertMaterial( { color: 0xff0000});
+        let sphereMat = new THREE.MeshLambertMaterial( { color: APPCONFIG.TRAIL_MATERIAL});
         let sphereTrail = new THREE.Mesh(sphereGeom, sphereMat);
         this.trailObject = sphereTrail;
 

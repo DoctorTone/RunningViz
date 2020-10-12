@@ -12,6 +12,7 @@ const APPCONFIG = {
     GROUND_SEGMENTS: 16,
     GROUND_MATERIAL: 0x515457,
     GROUND_LEVEL: -30,
+    TRAIL_MATERIAL: 0xffa500,
     RIGHT: 1,
     LEFT: 0,
     UP: 2,
