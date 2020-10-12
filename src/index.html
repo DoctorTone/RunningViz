@@ -37,46 +37,73 @@
   </div>
   <div id="controls" class="panel">
     <p>Playback</p>
-    <div id="controlImages">
+    <div id="controlImages" class="mb-3">
       <img id="rewind" src="./images/rewind-button.png" alt="rewind">
       <img id="play" src="./images/play-button.png">
       <img id="fastForward" src="./images/forward-button-green.png" alt="fast forward">
     </div>
-    <div>
-      <span>Speed:&nbsp</span>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx1" value="1" checked>
-        <label class="form-check-label" for="playx1">x1</label>
+    <div class="row">
+      <div class="col-3">
+        <span>Speed:&nbsp</span>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx2" value="2">
-        <label class="form-check-label" for="playx2">x2</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx4" value="4">
-        <label class="form-check-label" for="playx4">x4</label>
-      </div>
-    </div>
-    <div class="ml-5 pl-5">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx8" value="8">
-        <label class="form-check-label" for="playx8">x8</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx16" value="16">
-        <label class="form-check-label" for="playx16">x16</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="playbackSpeed" id="playx32" value="32">
-        <label class="form-check-label" for="playx32">x32</label>
+      <div class="col-9 text-left">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx1" value="1" checked>
+          <label class="form-check-label" for="playx1">x1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx2" value="2">
+          <label class="form-check-label" for="playx2">x2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx4" value="4">
+          <label class="form-check-label" for="playx4">x4</label>
+        </div>
       </div>
     </div>
-    <p>
-      Elapsed:&nbsp<span id="elapsedHours">00</span>:<span id="elapsedMinutes">00</span>:<span id="elapsedSeconds">00</span>
-    </p>
-    <p>
-      Distance:&nbsp<span id="distance">0.00</span>
-    </p>
+
+    <div class="row">
+      <div class="col-3">
+
+      </div>
+      <div class="col-9 text-left">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx8" value="8">
+          <label class="form-check-label" for="playx8">x8</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx16" value="16">
+          <label class="form-check-label" for="playx16">x16</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="playbackSpeed" id="playx32" value="32">
+          <label class="form-check-label" for="playx32">x32</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-3">
+        <p>
+          Elapsed&nbsp:
+        </p>
+      </div>
+      <div class="col-9 text-left">
+        <span id="elapsedHours">00</span>:<span id="elapsedMinutes">00</span>:<span id="elapsedSeconds">00</span>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-3">
+        <p>
+          Distance&nbsp:
+        </p>
+      </div>
+      <div class="col-9 text-left">
+        <span id="distance">00.00</span>
+      </div>
+    </div>
+    
   </div>
 
   <div id="rotate" class="panel d-none">
