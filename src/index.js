@@ -139,7 +139,8 @@ class RunViz extends BaseApp {
     }
 
     update() {
-        let delta = this.clock.getDelta() * 1000;
+        let delta = this.clock.getDelta();
+        let delta_ms = delta * 1000;
 
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
@@ -162,8 +163,9 @@ class RunViz extends BaseApp {
         }
 
         if (this.animating) {
-            delta = this.playbackDirection === APPCONFIG.FORWARD ? delta : -delta;
-            this.elapsedTime += (delta * this.playbackSpeed);
+            delta_ms = this.playbackDirection === APPCONFIG.FORWARD ? delta_ms : -delta_ms;
+            this.elapsedTime += (delta_ms * this.playbackSpeed);
+            let delta_elapsed = this.trackPoints[this.currentPoint + 1].elapsed - this.trackPoints[this.currentPoint].elapsed;
             this.updateDisplayTime(this.elapsedTime);
 
             if (this.playbackDirection === APPCONFIG.FORWARD) {
@@ -175,6 +177,12 @@ class RunViz extends BaseApp {
                         $("#play").attr("src", "/src/images/play-button.png");
                     }
                     this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
+                } else {
+                    // Interpolate
+                    this.tempVec.copy(this.trackPoints[this.currentPoint + 1].position);
+                    this.tempVec.sub(this.trackPoints[this.currentPoint].position);
+                    this.tempVec.multiplyScalar((delta_ms * this.playbackSpeed) / delta_elapsed);
+                    this.runnerBody.position.add(this.tempVec);
                 }
             } else {
                 if (this.elapsedTime <= this.trackPoints[this.currentPoint - 1].elapsed) {
