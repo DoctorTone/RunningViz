@@ -78,15 +78,6 @@ class RunViz extends BaseApp {
         grid.material.transparent = true;
         grid.position.y = -28;
         this.scene.add( grid );
-                
-        // Add avatar to scene - cube for now
-        /*
-        const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
-        const runnerMat = new THREE.MeshLambertMaterial( {color: 0xa0a0a0});
-        const runner = new THREE.Mesh(runnerGeom, runnerMat);
-        this.root.add(runner);
-        runner.position.y = APPCONFIG.CUBE_HEIGHT/2;
-        */
 
         // Trails
         let sphereGeom = new THREE.SphereBufferGeometry(5);
@@ -130,6 +121,7 @@ class RunViz extends BaseApp {
             this.root.add(currentTrail);
         }
 
+        // Running avatar
         let runner;
         let loader = new GLTFLoader().setPath("./src/models/");
         loader.load("runningMan.glb", gltf => {
