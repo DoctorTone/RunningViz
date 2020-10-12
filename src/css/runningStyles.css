@@ -7,7 +7,7 @@ body {
 .title {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 50%;
     text-align: left;
 }
 .title .titleText {
@@ -37,13 +37,18 @@ body {
 #rotate img {
     width: 100%;
 }
-#controls {
+#playbackControls {
     top: 7.5%;
     left: 1%;
     width: 100%;
 }
-#controls img {
+#playbackControls img {
     width: 15%;
+}
+#runningInfo {
+    top: 32.5%;
+    left: 1%;
+    width: 100%;
 }
 .copyright {
     position: absolute;
@@ -61,56 +66,11 @@ body {
 }
 
 /* Small screens */
-@media (min-width: 576px) {
-    .title {
-        text-align: center;
-    }
-    #rotate {
-        width: 15%;
-    }
-}
-
-/* Small screen - landscape */
 @media (min-width: 576px) and (orientation: landscape) {
-    .title {
-        text-align: center;
-    }
-    #rotate {
-        width: 11%;
-        top: 11%;
-    }
-    #info {
-        width: 7.5%;
-    }
+   #playbackControls {
+       top: 1%;
+       left: 30%;
+       width: 50%;
+   }
 }
 
-/* iPad in landscape */
-@media (min-width: 992px) {
-    #rotate {
-        width: 10%;
-        top: 60%;
-    }
-    #info {
-        width: 6%;
-    }
-}
-
-/* Larger screens */
-@media (min-width: 1200px) {
-    #rotate {
-        width: 8%;
-    }
-    #rotate img {
-        width: 100%;
-    }
-    #info {
-        width: 4%;
-    }
-}
-
-/* Full HD screens */
-@media (min-width: 1600px) {
-    #rotate {
-        width: 7%;
-    }
-}
