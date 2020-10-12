@@ -10,15 +10,19 @@ body {
     width: 100%;
     text-align: left;
 }
+.title .titleText {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
 .modal {
     color: black;
 }
 .panel {
     position: absolute;
-    text-align: center;
 }
 .panel p {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
 }
 #rotate {
     bottom: 15%;
@@ -34,12 +38,12 @@ body {
     width: 100%;
 }
 #controls {
-    top: 1%;
-    right: 1%;
-    width: 20%;
+    top: 7.5%;
+    left: 1%;
+    width: 100%;
 }
 #controls img {
-    width: 20%;
+    width: 15%;
 }
 .copyright {
     position: absolute;
