@@ -29,6 +29,8 @@ class RunViz extends BaseApp {
 
         //Temp variables
         this.tempVec = new THREE.Vector3();
+        this.headVector = new THREE.Vector3(0, 0, 1);
+        this.currentDirection = new THREE.Vector3();
     }
 
     init() {
@@ -141,6 +143,7 @@ class RunViz extends BaseApp {
     update() {
         let delta = this.clock.getDelta();
         let delta_ms = delta * 1000;
+        let delta_elapsed;
 
         if (this.cameraRotate) {
             this.root.rotation[this.rotAxis] += (this.rotSpeed * this.rotDirection * delta);
@@ -165,10 +168,10 @@ class RunViz extends BaseApp {
         if (this.animating) {
             delta_ms = this.playbackDirection === APPCONFIG.FORWARD ? delta_ms : -delta_ms;
             this.elapsedTime += (delta_ms * this.playbackSpeed);
-            let delta_elapsed = this.trackPoints[this.currentPoint + 1].elapsed - this.trackPoints[this.currentPoint].elapsed;
             this.updateDisplayTime(this.elapsedTime);
 
             if (this.playbackDirection === APPCONFIG.FORWARD) {
+                delta_elapsed = this.trackPoints[this.currentPoint + 1].elapsed - this.trackPoints[this.currentPoint].elapsed;
                 if (this.elapsedTime >= this.trackPoints[this.currentPoint + 1].elapsed) {
                     this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
                     this.trails[this.currentPoint].visible = true;
@@ -181,10 +184,13 @@ class RunViz extends BaseApp {
                     // Interpolate
                     this.tempVec.copy(this.trackPoints[this.currentPoint + 1].position);
                     this.tempVec.sub(this.trackPoints[this.currentPoint].position);
+                    this.currentDirection.copy(this.tempVec);
                     this.tempVec.multiplyScalar((delta_ms * this.playbackSpeed) / delta_elapsed);
                     this.runnerBody.position.add(this.tempVec);
+                    this.runnerBody.quaternion.setFromUnitVectors(this.headVector, this.currentDirection);
                 }
             } else {
+                delta_elapsed = this.trackPoints[this.currentPoint].elapsed - this.trackPoints[this.currentPoint - 1].elapsed;
                 if (this.elapsedTime <= this.trackPoints[this.currentPoint - 1].elapsed) {
                     this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
                     this.trails[this.currentPoint].visible = false;
@@ -193,6 +199,12 @@ class RunViz extends BaseApp {
                         $("#play").attr("src", "/src/images/play-button.png");
                     }
                     this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
+                } else {
+                    // Interpolate
+                    this.tempVec.copy(this.trackPoints[this.currentPoint].position);
+                    this.tempVec.sub(this.trackPoints[this.currentPoint - 1].position);
+                    this.tempVec.multiplyScalar((delta_ms * this.playbackSpeed) / delta_elapsed);
+                    this.runnerBody.position.add(this.tempVec);
                 }
             }
         }
