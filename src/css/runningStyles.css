@@ -72,5 +72,9 @@ body {
        left: 30%;
        width: 50%;
    }
+   #runningInfo {
+       top: 1%;
+       left: 60%;
+   }
 }
 
