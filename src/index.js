@@ -1,5 +1,6 @@
 import $ from "jquery";
 import * as THREE from "three";
+import { GLTFLoader } from "../node_modules/three/examples/jsm/loaders/GLTFLoader";
 
 import { BaseApp } from "./js/baseApp";
 import { APPCONFIG } from "./js/appConfig";
@@ -79,11 +80,13 @@ class RunViz extends BaseApp {
         this.scene.add( grid );
                 
         // Add avatar to scene - cube for now
+        /*
         const runnerGeom = new THREE.CylinderBufferGeometry(APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_WIDTH, APPCONFIG.CUBE_HEIGHT);
         const runnerMat = new THREE.MeshLambertMaterial( {color: 0xa0a0a0});
         const runner = new THREE.Mesh(runnerGeom, runnerMat);
         this.root.add(runner);
         runner.position.y = APPCONFIG.CUBE_HEIGHT/2;
+        */
 
         // Trails
         let sphereGeom = new THREE.SphereBufferGeometry(5);
@@ -127,12 +130,19 @@ class RunViz extends BaseApp {
             this.root.add(currentTrail);
         }
 
-        runner.position.copy(points[0].position);
+        let runner;
+        let loader = new GLTFLoader().setPath("./src/models/");
+        loader.load("runningMan.glb", gltf => {
+            runner = gltf.scene;
+            runner.position.copy(points[0].position);
+            runner.scale.set(5, 5, 5);
+            this.runnerBody = runner;
+            this.scene.add(runner);
+        });
 
         this.numPoints = numPoints;
         this.trackPoints = points;
         this.currentPoint = 0;
-        this.runnerBody = runner;
         this.trails = trails;
     }
 
