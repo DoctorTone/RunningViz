@@ -72,7 +72,7 @@ class RunViz extends BaseApp {
         }
         
         // Grid
-        let grid = new THREE.GridHelper( 10000, 100, 0x000000, 0x000000 );
+        let grid = new THREE.GridHelper( 10000, 100, 0xffffff, 0xffffff );
         grid.material.opacity = 0.2;
         grid.material.transparent = true;
         grid.position.y = -28;
