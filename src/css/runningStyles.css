@@ -76,5 +76,8 @@ body {
        top: 1%;
        left: 60%;
    }
+   #info {
+       width: 5%;
+   }
 }
 
