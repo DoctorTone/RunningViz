@@ -24,7 +24,7 @@ class RunViz extends BaseApp {
         this.zoomingOut = false;
         this.zoomSpeed = APPCONFIG.ZOOM_SPEED;
         this.animating = false;
-        this.playbackSpeed = 1;
+        this.playbackSpeed = 16;
         this.playbackDirection = APPCONFIG.FORWARD;
 
         //Temp variables
