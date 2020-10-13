@@ -81,3 +81,18 @@ body {
    }
 }
 
+@media (min-width: 768px) {
+    #playbackControls {
+        top: 1%;
+        left: 40%;
+        width: 50%;
+    }
+    #runningInfo {
+        top: 1%;
+        left: 65%;
+    }
+    #info {
+        width: 7%;
+    }
+}
+
