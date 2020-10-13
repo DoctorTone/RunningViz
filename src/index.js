@@ -191,6 +191,12 @@ class RunViz extends BaseApp {
                     this.runnerBody.quaternion.setFromUnitVectors(this.headVector, this.currentDirection);
                 }
             } else {
+                if (this.currentPoint === 0) {
+                    this.animating = false;
+                    $("#play").attr("src", "/src/images/play-button.png");
+                    return;
+                }
+
                 delta_elapsed = this.trackPoints[this.currentPoint].elapsed - this.trackPoints[this.currentPoint - 1].elapsed;
                 if (this.elapsedTime <= this.trackPoints[this.currentPoint - 1].elapsed) {
                     this.updateDisplayDistance(this.trackPoints[this.currentPoint+1].distance);
