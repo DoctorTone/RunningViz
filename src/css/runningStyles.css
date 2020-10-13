@@ -81,7 +81,7 @@ body {
    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape) {
     #playbackControls {
         top: 1%;
         left: 40%;
@@ -93,6 +93,50 @@ body {
     }
     #info {
         width: 7%;
+    }
+    .title .titleText {
+        font-size: 2.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #playbackControls {
+        top: 1%;
+        left: 40%;
+        width: 60%;
+    }
+    #runningInfo {
+        top: 1%;
+        left: 65%;
+    }
+    #info {
+        width: 7%;
+    }
+    .title .titleText {
+        font-size: 2.25rem;
+    }
+}
+
+@media (min-width: 992px) {
+    #playbackControls {
+        top: 1%;
+        left: 75%;
+        width: 40%;
+    }
+    #runningInfo {
+        top: 27.5%;
+        right: 3.5%;
+    }
+    #info {
+        width: 5%;
+    }
+}
+
+@media (min-width: 1200px) {
+    #playbackControls {
+        top: 1%;
+        left: 75%;
+        width: 25%;
     }
 }
 
