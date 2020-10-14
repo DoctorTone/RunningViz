@@ -79,7 +79,7 @@ class RunViz extends BaseApp {
         grid.material.opacity = 0.2;
         grid.material.transparent = true;
         grid.position.y = -28;
-        this.scene.add( grid );
+        this.root.add( grid );
 
         // Trails
         let sphereGeom = new THREE.SphereBufferGeometry(5);
@@ -131,7 +131,7 @@ class RunViz extends BaseApp {
             runner.position.copy(points[0].position);
             runner.scale.set(5, 5, 5);
             this.runnerBody = runner;
-            this.scene.add(runner);
+            this.root.add(runner);
         });
 
         this.numPoints = numPoints;
