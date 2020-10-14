@@ -79,6 +79,9 @@ body {
    #info {
        width: 5%;
    }
+   #rotate {
+       width: 10%;
+   }
 }
 
 @media (min-width: 768px) and (orientation: landscape) {
@@ -137,6 +140,9 @@ body {
         top: 1%;
         left: 75%;
         width: 25%;
+    }
+    #rotate {
+        width: 7.5%;
     }
 }
 
