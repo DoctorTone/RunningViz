@@ -14,6 +14,9 @@ import elevationData from "../data/elevationData.json";
 
 import { TrackPoint } from "./js/trackPoint";
 
+// Images
+import playImage from "../src/images/play-button.png";
+
 class RunViz extends BaseApp {
     constructor() {
         super();
@@ -177,7 +180,7 @@ class RunViz extends BaseApp {
                     this.trails[this.currentPoint].visible = true;
                     if (++this.currentPoint === (this.numPoints - 1)) {
                         this.animating = false;
-                        $("#play").attr("src", "/src/images/play-button.png");
+                        $("#play").attr("src", playImage);
                     }
                     this.runnerBody.position.copy(this.trackPoints[this.currentPoint].position);
                 } else {
