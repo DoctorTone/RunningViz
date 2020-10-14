@@ -19,6 +19,7 @@
               <div class="modal-body">
                   This visualisation uses data from the Adidas Runtastic app to plot the route taken for a particular run.<br>
                   Use the controls to start/stop/pause/rewind the animation.<br>
+                  Use mouse or zoom/rotate to alter view.<br>
                   Visualisations such as these are best viewed on larger displays. Enjoy!
               </div>
               <div class="modal-footer">
@@ -29,13 +30,13 @@
   </div>
 
   
-  <div class="title text-left pl-2 pt-md-2">
+  <div class="title noContext text-left pl-2 pt-md-2">
     <p class="titleText">Running Viz</p>
   </div>
-  <div class="copyright">
+  <div class="copyright noContext">
     <span>&copy DRT Software Ltd. 2020</span>
   </div>
-  <div id="playbackControls" class="panel pl-2 pl-sm-0">
+  <div id="playbackControls" class="noContext panel pl-2 pl-sm-0">
     <p class="mb-1">Playback</p>
     <div class="mb-3">
       <img id="rewind" src="./images/rewind-button.png" alt="rewind">
@@ -83,7 +84,7 @@
     </div>
   </div>
   
-  <div id="runningInfo" class="panel pl-2">
+  <div id="runningInfo" class="noContext panel pl-2">
     <div class="row">
       <div class="col-2 text-left text-md-right">
         <p>
@@ -107,7 +108,7 @@
     </div>
   </div>
 
-  <div id="rotate" class="panel">
+  <div id="rotate" class="panel noContext">
     <p>Zoom</p>
     <div class="">
       <button type="button" id="zoomOut" class="btn btn-primary"><img src="./images/minus.png"></button>
@@ -123,7 +124,8 @@
       <button type="button" id="rotateDown" class="btn btn-primary"><img src="./images/downWhite.png"></button>
     </div>
   </div>
-  <div id="info" class="panel">
+
+  <div id="info" class="panel noContext">
     <img src="./images/info.png">
   </div>
 

@@ -297,6 +297,12 @@ class RunViz extends BaseApp {
     setPlaybackSpeed() {
         this.playbackSpeed = document.querySelector('input[name="playbackSpeed"]:checked').value;
     }
+
+    stopNotifications(className) {
+        $("." + className).on("contextmenu", () => {
+            return false;
+        });
+    }
 }
 
 $( () => {
@@ -445,4 +451,7 @@ $( () => {
     playbackSpeed.on("click", () => {
         app.setPlaybackSpeed();
     });
+
+    let elemList = ["title", "copyright", "info"];
+    app.stopNotifications("noContext");
 });
