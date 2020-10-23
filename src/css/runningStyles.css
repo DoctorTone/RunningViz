@@ -68,6 +68,18 @@ body {
 }
 
 /* Small screens */
+@media (min-width: 576px) {
+    #playbackControls {
+        width: 40%;
+    }
+    #runningInfo {
+        top: 30%;
+    }
+    #rotate {
+        width: 15%;
+    }
+}
+
 @media (min-width: 576px) and (orientation: landscape) {
    #playbackControls {
        top: 12.5%;
@@ -86,39 +98,44 @@ body {
    }
 }
 
-@media (min-width: 768px) and (orientation: landscape) {
+@media (min-width: 768px) {
     #playbackControls {
-        top: 1%;
-        left: 40%;
-        width: 50%;
+        top: 7.5%;
+        left: 1%;
+        width: 60%;
     }
     #runningInfo {
-        top: 1%;
-        left: 65%;
+        top: 27.5%;
+        left: -4%;
     }
     #info {
         width: 7%;
+    }
+    #rotate {
+        top: 5%;
+        width: 15%;
     }
     .title .titleText {
         font-size: 2.25rem;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (orientation: landscape) {
     #playbackControls {
-        top: 1%;
-        left: 40%;
-        width: 60%;
+        top: 15%;
+        left: 1%;
+        width: 50%;
     }
     #runningInfo {
-        top: 1%;
-        left: 65%;
+        top: 62.5%;
+        left: -4%;
+    }
+    #rotate {
+        top: 5%;
+        width: 10%;
     }
     #info {
         width: 7%;
-    }
-    #rotate {
-        width: 15%;
     }
     .title .titleText {
         font-size: 2.25rem;
@@ -133,12 +150,13 @@ body {
     }
     #runningInfo {
         top: 27.5%;
-        right: 3.5%;
+        left: 68%;
     }
     #info {
         width: 5%;
     }
     #rotate {
+        top: 60%;
         width: 10%;
     }
 }
@@ -146,7 +164,7 @@ body {
 @media (min-width: 1200px) {
     #playbackControls {
         top: 1%;
-        left: 75%;
+        left: 80%;
         width: 25%;
     }
     #rotate {
@@ -160,5 +178,12 @@ body {
 @media (min-width: 1600px) {
     #rotate {
         width: 6%;
+    }
+    #playbackControls {
+        left: 82.5%;
+    }
+    #runningInfo {
+        top: 22.5%;
+        left: 72.5%;
     }
 }
