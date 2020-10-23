@@ -70,7 +70,7 @@ body {
 /* Small screens */
 @media (min-width: 576px) {
     #playbackControls {
-        width: 40%;
+        width: 45%;
     }
     #runningInfo {
         top: 30%;
